@@ -1,41 +1,38 @@
+import { memo } from "react";
 import React from "react";
 import Admonition from '@theme/Admonition';
 import styles from "./styles.module.css";
 import Badge from "@site/src/components/Badges";
 import Link from "@docusaurus/Link";
-
 interface EntryFieldProps {
-    name: string;
-    children?: React.ReactNode;
-    required?: boolean;
-    inherited?: boolean;
-    optional?: boolean;
-    multiple?: boolean;
-    deprecated?: boolean;
-    colored?: boolean;
-    multiline?: boolean;
-    regex?: boolean;
-    placeholders?: boolean;
-    duration?: boolean;
-    reference?: boolean;
-    segment?: boolean;
+  name: string;
+  children?: React.ReactNode;
+  required?: boolean;
+  inherited?: boolean;
+  optional?: boolean;
+  multiple?: boolean;
+  deprecated?: boolean;
+  colored?: boolean;
+  multiline?: boolean;
+  regex?: boolean;
+  placeholders?: boolean;
+  duration?: boolean;
+  reference?: boolean;
+  segment?: boolean;
 }
-
-export const RequiredBadge = () => <Badge name="Required" color="#ff3838" />;
-export const InheritedBadge = () => <Badge name="Inherited" color="#a83dff" />;
-export const OptionalBadge = () => <Badge name="Optional" color="#3191f7" />;
-export const MultipleBadge = () => <Badge name="List" color="#20bf7c" />;
-export const DeprecatedBadge = () => <Badge name="Deprecated" color="#fa9d2a" />;
-export const ColoredBadge = () => <Badge name="Colored" color="#ff8e42" />;
-export const MultiLineBadge = () => <Badge name="Multi-Line" color="#b39e00" />;
-export const RegexBadge = () => <Badge name="Regex" color="#f731d6" />;
-export const PlaceholdersBadge = () => <Badge name="Placeholders" color="#00b300" />;
-export const ReferenceBadge = () => <Badge name="Reference" color="#b21fde" />;
-export const SegmentBadge = () => <Badge name="Segment" color="#1fde99" />;
-
+export const RequiredBadge = memo(() => <Badge name="Required" color="#ff3838" />);
+export const InheritedBadge = memo(() => <Badge name="Inherited" color="#a83dff" />);
+export const OptionalBadge = memo(() => <Badge name="Optional" color="#3191f7" />);
+export const MultipleBadge = memo(() => <Badge name="List" color="#20bf7c" />);
+export const DeprecatedBadge = memo(() => <Badge name="Deprecated" color="#fa9d2a" />);
+export const ColoredBadge = memo(() => <Badge name="Colored" color="#ff8e42" />);
+export const MultiLineBadge = memo(() => <Badge name="Multi-Line" color="#b39e00" />);
+export const RegexBadge = memo(() => <Badge name="Regex" color="#f731d6" />);
+export const PlaceholdersBadge = memo(() => <Badge name="Placeholders" color="#00b300" />);
+export const ReferenceBadge = memo(() => <Badge name="Reference" color="#b21fde" />);
+export const SegmentBadge = memo(() => <Badge name="Segment" color="#1fde99" />);
 export const EntryField = (props: EntryFieldProps) => {
-    return (
-        <div className={styles.entryField}>
+  return <div className={styles.entryField}>
             <div className={styles.header}>
                 <h2 className={styles.name}>{props.name}</h2>
                 {props.required && <RequiredBadge />}
@@ -58,185 +55,137 @@ export const EntryField = (props: EntryFieldProps) => {
                 {props.duration && <DurationInfo />}
                 {props.segment && <SegmentInfo />}
             </div>
-        </div>
-    );
+        </div>;
 };
-
-export const CriteriaField = () => {
-    return (
-        <EntryField name="Criteria" inherited multiple>
+export const CriteriaField = memo(() => {
+  return <EntryField name="Criteria" inherited multiple>
             A list of facts that must be met by the player before this entry can be triggered.
-        </EntryField>
-    );
-};
-export const ModifiersField = () => {
-    return (
-        <EntryField name="Modifiers" inherited multiple>
+        </EntryField>;
+});
+export const ModifiersField = memo(() => {
+  return <EntryField name="Modifiers" inherited multiple>
             A list of facts that will be modified for the player when this entry is triggered.
-        </EntryField>
-    );
-};
-
-export const TriggersField = () => {
-    return (
-        <EntryField name="Triggers" inherited multiple>
+        </EntryField>;
+});
+export const TriggersField = memo(() => {
+  return <EntryField name="Triggers" inherited multiple>
             A list of entries that will be triggered after this entry is triggered.
-        </EntryField>
-    );
-};
-
-export const SpeakerField = () => {
-    return (
-        <EntryField name="Speaker" inherited>
+        </EntryField>;
+});
+export const SpeakerField = memo(() => {
+  return <EntryField name="Speaker" inherited>
             A reference to a speaker that will be used.
-        </EntryField>
-    );
-};
-
-export const CommentField = () => {
-    return (
-        <EntryField name="Comment" optional inherited>
+        </EntryField>;
+});
+export const CommentField = memo(() => {
+  return <EntryField name="Comment" optional inherited>
             A comment to keep track of what this fact is used for.
-        </EntryField>
-    );
-};
-
-export const DisplayNameField = () => {
-    return (
-        <EntryField name="Display Name" required inherited>
+        </EntryField>;
+});
+export const DisplayNameField = memo(() => {
+  return <EntryField name="Display Name" required inherited>
             The display name of the speaker.
-        </EntryField>
-    );
-};
-
-export const SoundField = () => {
-    return (
-        <EntryField name="Sound" required inherited>
+        </EntryField>;
+});
+export const SoundField = memo(() => {
+  return <EntryField name="Sound" required inherited>
             The sound that will be played when the speaker speaks.
-        </EntryField>
-    );
-};
-
+        </EntryField>;
+});
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
-export const ActionsField = () => {
-    return (
-        <div>
+export const ActionsField = memo(() => {
+  return <div>
             <CriteriaField />
             <ModifiersField />
             <TriggersField />
-        </div>
-    );
-};
+        </div>;
+});
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
-export const FactsField = () => {
-    return (
-        <div>
+export const FactsField = memo(() => {
+  return <div>
             <EntryField name="Comment" optional inherited>
                 A comment to keep track of what this fact is used for.
             </EntryField>
-        </div>
-    );
-};
+        </div>;
+});
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
-export const EventsField = () => {
-    return (
-        <div>
+export const EventsField = memo(() => {
+  return <div>
             <TriggersField />
-        </div>
-    );
-};
+        </div>;
+});
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
-export const SpeakersField = () => {
-    return (
-        <div>
+export const SpeakersField = memo(() => {
+  return <div>
             <EntryField name="Display Name" required inherited>
                 The display name of the speaker.
             </EntryField>
             <EntryField name="Sound" required inherited>
                 The sound that will be played when the speaker speaks.
             </EntryField>
-        </div>
-    );
-};
-
-export const ColorInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const ColorInfo = memo(() => {
+  return <div>
             <br />
             Colors and formatting from the{" "}
             <Link to="https://docs.advntr.dev/minimessage/format.html">
                 <code>MiniMessage Adventure Api</code>
             </Link>{" "}
             can be used. So for example, you can use <code>&lt;red&gt;Some Text&lt;/red&gt;</code> for red text.
-        </div>
-    );
-};
-
-export const PlaceholderInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const PlaceholderInfo = memo(() => {
+  return <div>
             <br />
             Placeholders from the{" "}
             <Link to="https://github.com/PlaceholderAPI/PlaceholderAPI/wiki">
                 <code>PlaceholderApi</code>
             </Link>{" "}
             can be used. So for example, you can use <code>%player_name%</code> for the player name.
-        </div>
-    );
-};
-
-export const DurationInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const DurationInfo = memo(() => {
+  return <div>
             <br />
             Durations can be specified in the following format: <code>1d 2h 3m 4s</code>. The following units are supported: <code>d</code> for days, <code>h</code> for hours,
             <code>m</code> for minutes and <code>s</code> for seconds.
-        </div>
-    );
-};
-
-export const RegexInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const RegexInfo = memo(() => {
+  return <div>
             <br />
             <Link to="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">
                 <code>Regular expressions</code>
             </Link>{" "}
             can be used to match a pattern. For example, <code>^.*$</code> will match any string.
-        </div>
-    );
-};
-
-export const ReadonlyFactInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const ReadonlyFactInfo = memo(() => {
+  return <div>
             <br />
             This fact can only be <b>read</b>, not written to. Hence, it is only suitable for criteria.
-        </div>
-    );
-};
-
-export const SegmentInfo = () => {
-    return (
-        <div>
+        </div>;
+});
+export const SegmentInfo = memo(() => {
+  return <div>
             <br />
             Segments are time frames in a cinematic. During a segment can take actions or display information.
             <br />
             <Admonition type="info">
                 Segments cannot overlap. If you need overlapping segments, create a new entry.
             </Admonition>
-        </div>
-    );
-};
+        </div>;
+});
