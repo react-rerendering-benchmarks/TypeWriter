@@ -19,11 +19,3 @@ export default function NavbarItem({type, ...props}: Props): JSX.Element {
   }
   return <NavbarItemComponent {...(props as any)} />;
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

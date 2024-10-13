@@ -22,11 +22,3 @@ export default function AnnouncementBarCloseButton(
     </button>
   );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

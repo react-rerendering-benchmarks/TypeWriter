@@ -28,11 +28,3 @@ export default function Badge({name, color}: BadgeProps) {
 }
 
 
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

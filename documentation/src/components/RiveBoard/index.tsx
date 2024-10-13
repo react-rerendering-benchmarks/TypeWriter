@@ -55,11 +55,3 @@ export const useContainerDimensions = myRef => {
 
     return dimensions;
 };
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

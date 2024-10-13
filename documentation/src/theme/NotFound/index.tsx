@@ -18,11 +18,3 @@ export default function Index(): JSX.Element {
     </>
   );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

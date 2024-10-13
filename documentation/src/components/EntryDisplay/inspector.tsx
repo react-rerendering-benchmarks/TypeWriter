@@ -3,37 +3,43 @@ import { Page } from "../../libs/data";
 import { EntryNodeProps } from "./graph";
 import { Node, useOnSelectionChange } from "reactflow";
 import { EntryInspector, InspectorContext } from "../EntryInspector";
+
 interface EntryInspectorProps {
-  pages: Page[];
+    pages: Page[];
 }
-export default function GraphEntryInspector({
-  pages
-}: EntryInspectorProps) {
-  console.log(window.globalCount++);
-  const [selectedNodes, setSelectedNodes] = useState<Node<EntryNodeProps, string>[]>([]);
-  const onChange = useCallback(({
-    nodes
-  }: {
-    nodes: Node<EntryNodeProps, string>[];
-  }) => {
-    setSelectedNodes(nodes);
-  }, []);
-  useOnSelectionChange({
-    onChange
-  });
-  return <div className="sm:h-[35em] w-full sm:w-80 md:w-96 p-4 overflow-y-auto">
+
+export default function GraphEntryInspector({ pages }: EntryInspectorProps) {
+    const [selectedNodes, setSelectedNodes] = useState<
+        Node<EntryNodeProps, string>[]
+    >([]);
+
+    const onChange = useCallback(
+        ({ nodes }: { nodes: Node<EntryNodeProps, string>[] }) => {
+            setSelectedNodes(nodes);
+        },
+        []
+    );
+
+    useOnSelectionChange({
+        onChange,
+    });
+
+    return (
+        <div className="sm:h-[35em] w-full sm:w-80 md:w-96 p-4 overflow-y-auto">
             {selectedNodes.length === 0 && <EmptyInspector />}
-            {selectedNodes.length === 1 && <InspectorContext.Provider value={{
-      defaultExpanded: true
-    }}>
+            {selectedNodes.length === 1 && (
+                <InspectorContext.Provider value={{ defaultExpanded: true }}>
                     <EntryInspector entry={selectedNodes[0].data.entry} pages={pages} />
-                </InspectorContext.Provider>}
+                </InspectorContext.Provider>
+            )}
             {selectedNodes.length > 1 && <MultipleNodesInspector />}
-        </div>;
+        </div>
+    );
 }
+
 function EmptyInspector() {
-  console.log(window.globalCount++);
-  return <div className="">
+    return (
+        <div className="">
             <div className="text-xl font-bold pb-2">Interactive Graph</div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
                 This is an interactive graph of all the entries in the selected pages.
@@ -45,11 +51,13 @@ function EmptyInspector() {
                     Click on an entry to view its details.
                 </span>
             </p>
-        </div>;
+        </div>
+    );
 }
+
 function MultipleNodesInspector() {
-  console.log(window.globalCount++);
-  return <div className="">
+    return (
+        <div className="">
             <div className="text-xl font-bold pb-2">Multiple Nodes Selected</div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
                 The inspector can only show one entry at a time.
@@ -58,5 +66,6 @@ function MultipleNodesInspector() {
                     Click on an entry to view its details.
                 </span>
             </p>
-        </div>;
+        </div>
+    );
 }

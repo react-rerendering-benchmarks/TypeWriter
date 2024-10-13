@@ -121,11 +121,3 @@ const EntrySearch: React.FC<EntryProps> = ({ entryName }) => {
 };
 
 export default EntrySearch;
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

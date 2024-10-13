@@ -56,11 +56,3 @@ export default function Image(props: Props) {
         </div>
     );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

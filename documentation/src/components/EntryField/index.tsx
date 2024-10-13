@@ -240,11 +240,3 @@ export const SegmentInfo = () => {
         </div>
     );
 };
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;
