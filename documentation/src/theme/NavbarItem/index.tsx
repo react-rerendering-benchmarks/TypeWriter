@@ -1,29 +1,26 @@
-import React from 'react';
-import ComponentTypes from '@theme/NavbarItem/ComponentTypes';
-import type { NavbarItemType, Props } from '@theme/NavbarItem';
+import React from "react";
+import ComponentTypes from "@theme/NavbarItem/ComponentTypes";
+import type { NavbarItemType, Props } from "@theme/NavbarItem";
 function normalizeComponentType(type: NavbarItemType, props: object) {
   // Backward compatibility: navbar item with no type set
   // but containing dropdown items should use the type "dropdown"
-  if (!type || type === 'default') {
-    return 'items' in props ? 'dropdown' : 'default';
+  if (!type || type === "default") {
+    return "items" in props ? "dropdown" : "default";
   }
   return type;
 }
-export default function NavbarItem({
-  type,
-  ...props
-}: Props): JSX.Element {
+export default function NavbarItem({ type, ...props }: Props): JSX.Element {
   console.log(window.globalCount++);
   const componentType = normalizeComponentType(type, props);
   const NavbarItemComponent = ComponentTypes[componentType];
   if (!NavbarItemComponent) {
     throw new Error(`No NavbarItem component found for type "${type}".`);
   }
-  return <NavbarItemComponent {...props as any} />;
+  return <NavbarItemComponent {...(props as any)} />;
 }
 declare global {
   interface Window {
     globalCount: number;
   }
 }
-window.globalCount = 0;
+window.globalCount = window.globalCount || 0;

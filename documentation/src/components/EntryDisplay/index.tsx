@@ -8,8 +8,8 @@ import { useMemo } from "react";
 interface EntryDisplayProps {
   pages: Page[];
   /**
-  * Pages that are not shown as a graph, but where entries can be referenced.
-  */
+   * Pages that are not shown as a graph, but where entries can be referenced.
+   */
   referencePages: Page[];
 }
 export function capitalize(value: string) {
@@ -17,32 +17,45 @@ export function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 export function format(value: string) {
-  return value.split(".").map(e => capitalize(e)).join(" | ").split("_").map(e => capitalize(e)).join(" ");
+  return value
+    .split(".")
+    .map((e) => capitalize(e))
+    .join(" | ")
+    .split("_")
+    .map((e) => capitalize(e))
+    .join(" ");
 }
 export default function EntryDisplay({
   pages = [],
-  referencePages = []
+  referencePages = [],
 }: EntryDisplayProps) {
   console.log(window.globalCount++);
-  const totalPages = useMemo(() => pages.concat(referencePages), [pages, referencePages]);
-  return <Tabs lazy>
-            {pages.map(page => {
-      console.log(window.globalCount++);
-      return <TabItem key={page.name} value={page.name} label={format(page.name)}>
-                    <ReactFlowProvider>
-                        <div className="flex flex-col sm:flex-row">
-                            <PageLayout page={page} />
-                            <div className="w-full h-1 sm:h-[35em] sm:w-1 bg-[#0000001F] dark:bg-[#FFFFFF1F] rounded-sm" />
-                            <EntryInspector pages={totalPages} />
-                        </div>
-                    </ReactFlowProvider>
-                </TabItem>;
-    })}
-        </Tabs>;
+  const totalPages = useMemo(
+    () => pages.concat(referencePages),
+    [pages, referencePages]
+  );
+  return (
+    <Tabs lazy>
+      {pages.map((page) => {
+        console.log(window.globalCount++);
+        return (
+          <TabItem key={page.name} value={page.name} label={format(page.name)}>
+            <ReactFlowProvider>
+              <div className="flex flex-col sm:flex-row">
+                <PageLayout page={page} />
+                <div className="w-full h-1 sm:h-[35em] sm:w-1 bg-[#0000001F] dark:bg-[#FFFFFF1F] rounded-sm" />
+                <EntryInspector pages={totalPages} />
+              </div>
+            </ReactFlowProvider>
+          </TabItem>
+        );
+      })}
+    </Tabs>
+  );
 }
 declare global {
   interface Window {
     globalCount: number;
   }
 }
-window.globalCount = 0;
+window.globalCount = window.globalCount || 0;
