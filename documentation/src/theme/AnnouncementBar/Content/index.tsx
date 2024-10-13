@@ -17,3 +17,11 @@ export default function AnnouncementBarContent(
     />
   );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

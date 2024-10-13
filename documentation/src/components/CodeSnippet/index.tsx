@@ -35,3 +35,11 @@ export default function CodeSnippet({ tag, json }: CodeSnippetProps) {
         </CodeBlock>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

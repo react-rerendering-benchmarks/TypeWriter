@@ -18,3 +18,11 @@ export default function UnsupportedWarning(
         </Admonition>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

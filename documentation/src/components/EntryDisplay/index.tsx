@@ -47,3 +47,11 @@ export default function EntryDisplay({ pages = [], referencePages = [] }: EntryD
         </Tabs>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

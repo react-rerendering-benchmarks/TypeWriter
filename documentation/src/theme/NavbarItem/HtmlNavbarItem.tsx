@@ -1,25 +1,18 @@
 import React from 'react';
 import clsx from 'clsx';
-
-import type {Props} from '@theme/NavbarItem/HtmlNavbarItem';
-
+import type { Props } from '@theme/NavbarItem/HtmlNavbarItem';
 export default function HtmlNavbarItem({
   value,
   className,
   mobile = false,
-  isDropdownItem = false,
+  isDropdownItem = false
 }: Props): JSX.Element {
+  console.log(window.globalCount++);
   const Comp = isDropdownItem ? 'li' : 'div';
-  return (
-    <Comp
-      className={clsx(
-        {
-          navbar__item: !mobile && !isDropdownItem,
-          'menu__list-item': mobile,
-        },
-        className,
-      )}
-      dangerouslySetInnerHTML={{__html: value}}
-    />
-  );
+  return <Comp className={clsx({
+    navbar__item: !mobile && !isDropdownItem,
+    'menu__list-item': mobile
+  }, className)} dangerouslySetInnerHTML={{
+    __html: value
+  }} />;
 }

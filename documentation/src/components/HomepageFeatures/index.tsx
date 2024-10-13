@@ -74,3 +74,10 @@ export default memo(function HomepageFeatures() {
             </div>
         </section>;
 });
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

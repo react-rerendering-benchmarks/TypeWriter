@@ -21,3 +21,11 @@ export default function DeprecationWarning(
         </Admonition>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

@@ -24,3 +24,10 @@ export default memo(function AnnouncementBar() {
       {isCloseable && <AnnouncementBarCloseButton onClick={close} className="flex-none mr-2 w-12 h-full cursor-pointer" />}
     </div>;
 });
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

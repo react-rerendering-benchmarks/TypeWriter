@@ -31,3 +31,10 @@ export default memo(function DownloadVersion() {
             </span>;
   }
 });
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;
