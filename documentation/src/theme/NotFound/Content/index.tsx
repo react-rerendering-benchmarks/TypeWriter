@@ -37,11 +37,3 @@ export default function NotFoundContent({ className }: Props): JSX.Element {
         </main>
     );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

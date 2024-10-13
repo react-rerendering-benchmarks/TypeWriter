@@ -49,11 +49,3 @@ export default function AdmonitionLayout(props: Props): JSX.Element {
         </AdmonitionContainer>
     );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

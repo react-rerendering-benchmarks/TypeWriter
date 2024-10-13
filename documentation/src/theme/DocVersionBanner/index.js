@@ -104,4 +104,3 @@ export default function DocVersionBanner({
   }
   return null;
 }
-window.globalCount = 0;

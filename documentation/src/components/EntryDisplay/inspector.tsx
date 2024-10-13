@@ -10,7 +10,6 @@ interface EntryInspectorProps {
 export default function GraphEntryInspector({
   pages
 }: EntryInspectorProps) {
-  console.log(window.globalCount++);
   const [selectedNodes, setSelectedNodes] = useState<Node<EntryNodeProps, string>[]>([]);
   const onChange = useCallback(({
     nodes
@@ -33,7 +32,6 @@ export default function GraphEntryInspector({
         </div>;
 }
 const EmptyInspector = memo(function EmptyInspector() {
-  console.log(window.globalCount++);
   return <div className="">
             <div className="text-xl font-bold pb-2">Interactive Graph</div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
@@ -49,7 +47,6 @@ const EmptyInspector = memo(function EmptyInspector() {
         </div>;
 });
 const MultipleNodesInspector = memo(function MultipleNodesInspector() {
-  console.log(window.globalCount++);
   return <div className="">
             <div className="text-xl font-bold pb-2">Multiple Nodes Selected</div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">

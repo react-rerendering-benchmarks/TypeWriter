@@ -16,10 +16,3 @@ export default memo(function Index() {
       </Layout>
     </>;
 });
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

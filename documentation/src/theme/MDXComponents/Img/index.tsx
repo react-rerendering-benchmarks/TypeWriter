@@ -26,11 +26,3 @@ export default function MDXImg(props: Props): JSX.Element {
         />
     );
 }
-
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

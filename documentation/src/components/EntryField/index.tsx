@@ -189,10 +189,3 @@ export const SegmentInfo = memo(() => {
             </Admonition>
         </div>;
 });
-declare global {         
-  interface Window {         
-    globalCount: number;         
-  }         
-}
-
-window.globalCount = 0;

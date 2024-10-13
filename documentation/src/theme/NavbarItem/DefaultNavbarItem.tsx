@@ -19,7 +19,6 @@ function DefaultNavbarItemMobile({
   isDropdownItem,
   ...props
 }: DesktopOrMobileNavBarItemProps) {
-  console.log(window.globalCount++);
   return <li className="menu__list-item">
       <NavbarNavLink className={clsx('menu__link', className)} {...props} />
     </li>;
@@ -30,7 +29,6 @@ export default memo(function DefaultNavbarItem({
   // Need to destructure position from props so that it doesn't get passed on.
   ...props
 }: Props) {
-  console.log(window.globalCount++);
   const Comp = mobile ? DefaultNavbarItemMobile : DefaultNavbarItemDesktop;
   return <Comp {...props} activeClassName={props.activeClassName ?? (mobile ? 'menu__link--active' : 'navbar__link--active')} />;
 });
