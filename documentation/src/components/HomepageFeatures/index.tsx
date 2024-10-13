@@ -55,6 +55,7 @@ function Feature({
   RiveConfig,
   description
 }: FeatureItem) {
+  console.log(window.globalCount++);
   return <div className={clsx('col col--4', styles.feature)}>
             <div className="text--center">
                 <Rive className={styles.featureRive} {...RiveConfig} />
@@ -66,11 +67,21 @@ function Feature({
         </div>;
 }
 export default memo(function HomepageFeatures() {
+  console.log(window.globalCount++);
   return <section className={styles.features}>
             <div className="container">
                 <div className="row">
-                    {FeatureList.map((props, idx) => <Feature key={idx} {...props} />)}
+                    {FeatureList.map((props, idx) => {
+          console.log(window.globalCount++);
+          return <Feature key={idx} {...props} />;
+        })}
                 </div>
             </div>
         </section>;
 });
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

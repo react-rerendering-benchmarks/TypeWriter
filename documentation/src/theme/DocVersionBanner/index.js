@@ -13,6 +13,7 @@ function UnreleasedVersionLabel({
   siteTitle,
   versionMetadata
 }) {
+  console.log(window.globalCount++);
   return <Translate id="theme.docs.versions.unreleasedVersionLabel" description="The label used to tell the user that they're browsing an unreleased doc version" values={{
     siteTitle,
     versionLabel: <b>{versionMetadata.label}</b>,
@@ -25,6 +26,7 @@ function UnmaintainedVersionLabel({
   siteTitle,
   versionMetadata
 }) {
+  console.log(window.globalCount++);
   return <Translate id="theme.docs.versions.unmaintainedVersionLabel" description="The label used to tell the user that they're browsing an unmaintained doc version" values={{
     siteTitle,
     versionLabel: <b>{versionMetadata.label}</b>
@@ -37,6 +39,7 @@ const BannerLabelComponents = {
   unmaintained: UnmaintainedVersionLabel
 };
 function BannerLabel(props) {
+  console.log(window.globalCount++);
   const BannerLabelComponent = BannerLabelComponents[props.versionMetadata.banner];
   return <BannerLabelComponent {...props} />;
 }
@@ -45,6 +48,7 @@ const LatestVersionSuggestionLabel = memo(function LatestVersionSuggestionLabel(
   to,
   onClick
 }) {
+  console.log(window.globalCount++);
   return <Translate id="theme.docs.versions.latestVersionSuggestionLabel" description="The label used to tell the user to check the latest version" values={{
     versionLabel,
     latestVersionLink: <b>
@@ -62,6 +66,7 @@ function DocVersionBannerEnabled({
   className,
   versionMetadata
 }) {
+  console.log(window.globalCount++);
   const {
     siteConfig: {
       title: siteTitle
@@ -104,3 +109,4 @@ export default function DocVersionBanner({
   }
   return null;
 }
+window.globalCount = 0;

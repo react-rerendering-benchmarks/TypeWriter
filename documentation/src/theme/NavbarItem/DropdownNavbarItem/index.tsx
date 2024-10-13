@@ -29,11 +29,12 @@ function DropdownNavbarItemDesktop({
   onClick,
   ...props
 }: DesktopOrMobileNavBarItemProps) {
+  console.log(window.globalCount++);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent | FocusEvent) => {
-      if (!dropdownRef.current || dropdownRef.current.contains((event.target as Node))) {
+      if (!dropdownRef.current || dropdownRef.current.contains(event.target as Node)) {
         return;
       }
       setShowDropdown(false);
@@ -64,7 +65,10 @@ function DropdownNavbarItemDesktop({
         {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
-        {items.map((childItemProps, i) => <NavbarItem isDropdownItem activeClassName="dropdown__link--active" {...childItemProps} key={i} />)}
+        {items.map((childItemProps, i) => {
+        console.log(window.globalCount++);
+        return <NavbarItem isDropdownItem activeClassName="dropdown__link--active" {...childItemProps} key={i} />;
+      })}
       </ul>
     </div>;
 }
@@ -76,6 +80,7 @@ function DropdownNavbarItemMobile({
   onClick,
   ...props
 }: DesktopOrMobileNavBarItemProps) {
+  console.log(window.globalCount++);
   const localPathname = useLocalPathname();
   const containsActive = containsActiveItems(items, localPathname);
   const {
@@ -102,7 +107,10 @@ function DropdownNavbarItemMobile({
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
-        {items.map((childItemProps, i) => <NavbarItem mobile isDropdownItem onClick={onClick} activeClassName="menu__link--active" {...childItemProps} key={i} />)}
+        {items.map((childItemProps, i) => {
+        console.log(window.globalCount++);
+        return <NavbarItem mobile isDropdownItem onClick={onClick} activeClassName="menu__link--active" {...childItemProps} key={i} />;
+      })}
       </Collapsible>
     </li>;
 }
@@ -110,6 +118,13 @@ export default function DropdownNavbarItem({
   mobile = false,
   ...props
 }: Props): JSX.Element {
+  console.log(window.globalCount++);
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp {...props} />;
 }
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

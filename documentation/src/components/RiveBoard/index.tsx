@@ -6,6 +6,7 @@ interface RiveBoardProps {
   stateMachines?: string | string[];
 }
 export default function RiveBoard(props: RiveBoardProps) {
+  console.log(window.globalCount++);
   const ref = useRef();
   const {
     width
@@ -56,3 +57,9 @@ export const useContainerDimensions = myRef => {
   }, [myRef]);
   return dimensions.current;
 };
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

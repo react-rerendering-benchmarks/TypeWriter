@@ -17,6 +17,7 @@ export default memo(function NavbarNavLink({
   prependBaseUrlToHref,
   ...props
 }: Props) {
+  console.log(window.globalCount++);
   // TODO all this seems hacky
   // {to: 'version'} should probably be forbidden, in favor of {to: '/version'}
   const toUrl = useBaseUrl(to);

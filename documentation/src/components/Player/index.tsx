@@ -10,6 +10,7 @@ interface PlayerProps {
 export default function Player({
   url
 }: PlayerProps) {
+  console.log(window.globalCount++);
   const [progress, setProgress] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -63,6 +64,7 @@ const ProgressBar = memo(function ProgressBar({
   progress,
   onSeek
 }: ProgressBarProps) {
+  console.log(window.globalCount++);
   return <div className="w-full flex items-center text-white">
       <div className="flex-grow">
         <Bar progress={progress} onSeek={onSeek} />
@@ -77,6 +79,7 @@ function Bar({
   progress,
   onSeek
 }: BarProps) {
+  console.log(window.globalCount++);
   return <div className="relative h-[5px] rounded-t-lg overflow-hidden pb-2">
       <input type="range" min="0" max="100" value={progress} onChange={onSeek} className="absolute top-0 left-0 w-full h-[5px] opacity-0 cursor-pointer" style={{
       WebkitAppearance: "none",
@@ -88,3 +91,9 @@ function Bar({
     }} />
     </div>;
 }
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

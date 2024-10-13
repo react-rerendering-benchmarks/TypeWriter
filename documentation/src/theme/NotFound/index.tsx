@@ -5,6 +5,7 @@ import { PageMetadata } from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
 import NotFoundContent from '@theme/NotFound/Content';
 export default memo(function Index() {
+  console.log(window.globalCount++);
   const title = translate({
     id: 'theme.NotFound.title',
     message: 'Page Not Found'
@@ -16,3 +17,9 @@ export default memo(function Index() {
       </Layout>
     </>;
 });
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

@@ -1,19 +1,16 @@
 import React from 'react';
 import SearchBar from '@theme/SearchBar';
 import NavbarSearch from '@theme/Navbar/Search';
-import type {Props} from '@theme/NavbarItem/SearchNavbarItem';
-
+import type { Props } from '@theme/NavbarItem/SearchNavbarItem';
 export default function SearchNavbarItem({
   mobile,
-  className,
+  className
 }: Props): JSX.Element | null {
+  console.log(window.globalCount++);
   if (mobile) {
     return null;
   }
-
-  return (
-    <NavbarSearch className={className}>
+  return <NavbarSearch className={className}>
       <SearchBar />
-    </NavbarSearch>
-  );
+    </NavbarSearch>;
 }

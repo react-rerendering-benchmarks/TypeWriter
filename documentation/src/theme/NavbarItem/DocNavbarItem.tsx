@@ -9,6 +9,7 @@ export default function DocNavbarItem({
   docsPluginId,
   ...props
 }: Props): JSX.Element | null {
+  console.log(window.globalCount++);
   const {
     activeDoc
   } = useActiveDocContext(docsPluginId);

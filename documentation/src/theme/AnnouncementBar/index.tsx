@@ -5,6 +5,7 @@ import { useAnnouncementBar } from '@docusaurus/theme-common/internal';
 import AnnouncementBarCloseButton from '@theme/AnnouncementBar/CloseButton';
 import AnnouncementBarContent from '@theme/AnnouncementBar/Content';
 export default memo(function AnnouncementBar() {
+  console.log(window.globalCount++);
   const {
     announcementBar
   } = useThemeConfig();
@@ -24,3 +25,9 @@ export default memo(function AnnouncementBar() {
       {isCloseable && <AnnouncementBarCloseButton onClick={close} className="flex-none mr-2 w-12 h-full cursor-pointer" />}
     </div>;
 });
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;
