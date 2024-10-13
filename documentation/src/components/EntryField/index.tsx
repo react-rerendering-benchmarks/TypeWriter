@@ -3,39 +3,69 @@ import Admonition from '@theme/Admonition';
 import styles from "./styles.module.css";
 import Badge from "@site/src/components/Badges";
 import Link from "@docusaurus/Link";
-
 interface EntryFieldProps {
-    name: string;
-    children?: React.ReactNode;
-    required?: boolean;
-    inherited?: boolean;
-    optional?: boolean;
-    multiple?: boolean;
-    deprecated?: boolean;
-    colored?: boolean;
-    multiline?: boolean;
-    regex?: boolean;
-    placeholders?: boolean;
-    duration?: boolean;
-    reference?: boolean;
-    segment?: boolean;
+  name: string;
+  children?: React.ReactNode;
+  required?: boolean;
+  inherited?: boolean;
+  optional?: boolean;
+  multiple?: boolean;
+  deprecated?: boolean;
+  colored?: boolean;
+  multiline?: boolean;
+  regex?: boolean;
+  placeholders?: boolean;
+  duration?: boolean;
+  reference?: boolean;
+  segment?: boolean;
 }
-
-export const RequiredBadge = () => <Badge name="Required" color="#ff3838" />;
-export const InheritedBadge = () => <Badge name="Inherited" color="#a83dff" />;
-export const OptionalBadge = () => <Badge name="Optional" color="#3191f7" />;
-export const MultipleBadge = () => <Badge name="List" color="#20bf7c" />;
-export const DeprecatedBadge = () => <Badge name="Deprecated" color="#fa9d2a" />;
-export const ColoredBadge = () => <Badge name="Colored" color="#ff8e42" />;
-export const MultiLineBadge = () => <Badge name="Multi-Line" color="#b39e00" />;
-export const RegexBadge = () => <Badge name="Regex" color="#f731d6" />;
-export const PlaceholdersBadge = () => <Badge name="Placeholders" color="#00b300" />;
-export const ReferenceBadge = () => <Badge name="Reference" color="#b21fde" />;
-export const SegmentBadge = () => <Badge name="Segment" color="#1fde99" />;
-
+export const RequiredBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Required" color="#ff3838" />;
+};
+export const InheritedBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Inherited" color="#a83dff" />;
+};
+export const OptionalBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Optional" color="#3191f7" />;
+};
+export const MultipleBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="List" color="#20bf7c" />;
+};
+export const DeprecatedBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Deprecated" color="#fa9d2a" />;
+};
+export const ColoredBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Colored" color="#ff8e42" />;
+};
+export const MultiLineBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Multi-Line" color="#b39e00" />;
+};
+export const RegexBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Regex" color="#f731d6" />;
+};
+export const PlaceholdersBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Placeholders" color="#00b300" />;
+};
+export const ReferenceBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Reference" color="#b21fde" />;
+};
+export const SegmentBadge = () => {
+  console.log(window.globalCount++);
+  return <Badge name="Segment" color="#1fde99" />;
+};
 export const EntryField = (props: EntryFieldProps) => {
-    return (
-        <div className={styles.entryField}>
+  console.log(window.globalCount++);
+  return <div className={styles.entryField}>
             <div className={styles.header}>
                 <h2 className={styles.name}>{props.name}</h2>
                 {props.required && <RequiredBadge />}
@@ -58,185 +88,160 @@ export const EntryField = (props: EntryFieldProps) => {
                 {props.duration && <DurationInfo />}
                 {props.segment && <SegmentInfo />}
             </div>
-        </div>
-    );
+        </div>;
 };
-
 export const CriteriaField = () => {
-    return (
-        <EntryField name="Criteria" inherited multiple>
+  console.log(window.globalCount++);
+  return <EntryField name="Criteria" inherited multiple>
             A list of facts that must be met by the player before this entry can be triggered.
-        </EntryField>
-    );
+        </EntryField>;
 };
 export const ModifiersField = () => {
-    return (
-        <EntryField name="Modifiers" inherited multiple>
+  console.log(window.globalCount++);
+  return <EntryField name="Modifiers" inherited multiple>
             A list of facts that will be modified for the player when this entry is triggered.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 export const TriggersField = () => {
-    return (
-        <EntryField name="Triggers" inherited multiple>
+  console.log(window.globalCount++);
+  return <EntryField name="Triggers" inherited multiple>
             A list of entries that will be triggered after this entry is triggered.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 export const SpeakerField = () => {
-    return (
-        <EntryField name="Speaker" inherited>
+  console.log(window.globalCount++);
+  return <EntryField name="Speaker" inherited>
             A reference to a speaker that will be used.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 export const CommentField = () => {
-    return (
-        <EntryField name="Comment" optional inherited>
+  console.log(window.globalCount++);
+  return <EntryField name="Comment" optional inherited>
             A comment to keep track of what this fact is used for.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 export const DisplayNameField = () => {
-    return (
-        <EntryField name="Display Name" required inherited>
+  console.log(window.globalCount++);
+  return <EntryField name="Display Name" required inherited>
             The display name of the speaker.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 export const SoundField = () => {
-    return (
-        <EntryField name="Sound" required inherited>
+  console.log(window.globalCount++);
+  return <EntryField name="Sound" required inherited>
             The sound that will be played when the speaker speaks.
-        </EntryField>
-    );
+        </EntryField>;
 };
-
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
 export const ActionsField = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <CriteriaField />
             <ModifiersField />
             <TriggersField />
-        </div>
-    );
+        </div>;
 };
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
 export const FactsField = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <EntryField name="Comment" optional inherited>
                 A comment to keep track of what this fact is used for.
             </EntryField>
-        </div>
-    );
+        </div>;
 };
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
 export const EventsField = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <TriggersField />
-        </div>
-    );
+        </div>;
 };
 
 /**
  * @deprecated Should be individualy be generated by the documentation generator.
  */
 export const SpeakersField = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <EntryField name="Display Name" required inherited>
                 The display name of the speaker.
             </EntryField>
             <EntryField name="Sound" required inherited>
                 The sound that will be played when the speaker speaks.
             </EntryField>
-        </div>
-    );
+        </div>;
 };
-
 export const ColorInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             Colors and formatting from the{" "}
             <Link to="https://docs.advntr.dev/minimessage/format.html">
                 <code>MiniMessage Adventure Api</code>
             </Link>{" "}
             can be used. So for example, you can use <code>&lt;red&gt;Some Text&lt;/red&gt;</code> for red text.
-        </div>
-    );
+        </div>;
 };
-
 export const PlaceholderInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             Placeholders from the{" "}
             <Link to="https://github.com/PlaceholderAPI/PlaceholderAPI/wiki">
                 <code>PlaceholderApi</code>
             </Link>{" "}
             can be used. So for example, you can use <code>%player_name%</code> for the player name.
-        </div>
-    );
+        </div>;
 };
-
 export const DurationInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             Durations can be specified in the following format: <code>1d 2h 3m 4s</code>. The following units are supported: <code>d</code> for days, <code>h</code> for hours,
             <code>m</code> for minutes and <code>s</code> for seconds.
-        </div>
-    );
+        </div>;
 };
-
 export const RegexInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             <Link to="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">
                 <code>Regular expressions</code>
             </Link>{" "}
             can be used to match a pattern. For example, <code>^.*$</code> will match any string.
-        </div>
-    );
+        </div>;
 };
-
 export const ReadonlyFactInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             This fact can only be <b>read</b>, not written to. Hence, it is only suitable for criteria.
-        </div>
-    );
+        </div>;
 };
-
 export const SegmentInfo = () => {
-    return (
-        <div>
+  console.log(window.globalCount++);
+  return <div>
             <br />
             Segments are time frames in a cinematic. During a segment can take actions or display information.
             <br />
             <Admonition type="info">
                 Segments cannot overlap. If you need overlapping segments, create a new entry.
             </Admonition>
-        </div>
-    );
+        </div>;
 };
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;

@@ -5,36 +5,30 @@ import { PageLayout } from "./graph";
 import { Page } from "../../libs/data";
 import EntryInspector from "./inspector";
 import { useMemo } from "react";
-
 interface EntryDisplayProps {
-    pages: Page[];
-    /**
-    * Pages that are not shown as a graph, but where entries can be referenced.
-    */
-    referencePages: Page[];
+  pages: Page[];
+  /**
+  * Pages that are not shown as a graph, but where entries can be referenced.
+  */
+  referencePages: Page[];
 }
-
 export function capitalize(value: string) {
-    if (value.length === 0) return value;
-    return value.charAt(0).toUpperCase() + value.slice(1);
+  if (value.length === 0) return value;
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
-
 export function format(value: string) {
-    return value
-        .split(".")
-        .map((e) => capitalize(e))
-        .join(" | ")
-        .split("_")
-        .map((e) => capitalize(e))
-        .join(" ");
+  return value.split(".").map(e => capitalize(e)).join(" | ").split("_").map(e => capitalize(e)).join(" ");
 }
-
-export default function EntryDisplay({ pages = [], referencePages = [] }: EntryDisplayProps) {
-    const totalPages = useMemo(() => pages.concat(referencePages), [pages, referencePages]);
-    return (
-        <Tabs lazy>
-            {pages.map((page) => (
-                <TabItem key={page.name} value={page.name} label={format(page.name)}>
+export default function EntryDisplay({
+  pages = [],
+  referencePages = []
+}: EntryDisplayProps) {
+  console.log(window.globalCount++);
+  const totalPages = useMemo(() => pages.concat(referencePages), [pages, referencePages]);
+  return <Tabs lazy>
+            {pages.map(page => {
+      console.log(window.globalCount++);
+      return <TabItem key={page.name} value={page.name} label={format(page.name)}>
                     <ReactFlowProvider>
                         <div className="flex flex-col sm:flex-row">
                             <PageLayout page={page} />
@@ -42,8 +36,13 @@ export default function EntryDisplay({ pages = [], referencePages = [] }: EntryD
                             <EntryInspector pages={totalPages} />
                         </div>
                     </ReactFlowProvider>
-                </TabItem>
-            ))}
-        </Tabs>
-    );
+                </TabItem>;
+    })}
+        </Tabs>;
 }
+declare global {
+  interface Window {
+    globalCount: number;
+  }
+}
+window.globalCount = 0;
