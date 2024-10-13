@@ -48,4 +48,4 @@ export default memo(function DocVersionBadge() {
   }
   return null;
 });
-window.globalCount = 0;
+window.globalCount = window.globalCount || 0;

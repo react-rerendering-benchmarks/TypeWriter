@@ -34,4 +34,4 @@ export default function DocVersionRoot(props) {
             <DocVersionRootContent {...props} />
         </>;
 }
-window.globalCount = 0;
+window.globalCount = window.globalCount || 0;
