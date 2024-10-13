@@ -92,3 +92,11 @@ export default function HomepageFeatures(): JSX.Element {
         </section>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

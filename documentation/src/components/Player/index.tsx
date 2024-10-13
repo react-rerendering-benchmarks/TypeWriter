@@ -131,3 +131,11 @@ function Bar({ progress, onSeek }: BarProps) {
     </div>
   );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

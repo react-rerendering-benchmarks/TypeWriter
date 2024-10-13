@@ -31,3 +31,11 @@ export default function AnnouncementBar(): JSX.Element | null {
     </div>
   );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

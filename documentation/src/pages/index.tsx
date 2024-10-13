@@ -57,3 +57,11 @@ export default function Home(): JSX.Element {
         </Layout>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

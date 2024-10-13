@@ -774,3 +774,11 @@ function SkinFieldEditor({ path, value, }: { path: string, value: { texture: str
         </div>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;

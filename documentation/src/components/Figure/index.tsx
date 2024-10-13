@@ -12,3 +12,11 @@ export default function Figure({ title, ...props }: FigureProps) {
         </figure>
     );
 }
+
+declare global {         
+  interface Window {         
+    globalCount: number;         
+  }         
+}
+
+window.globalCount = 0;
